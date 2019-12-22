@@ -4,7 +4,6 @@
 
 <script>
 export default {
-  name: 'PlaintextComponent',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'value']
 }
 </script>

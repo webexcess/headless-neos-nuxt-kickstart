@@ -8,8 +8,6 @@
 
 <script>
   export default {
-    name: "DimensionNavComponent",
-
     computed: {
       dimensions () {
         return this.$store.getters.dimensions

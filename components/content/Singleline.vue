@@ -4,7 +4,6 @@
 
 <script>
 export default {
-  name: 'SinglelineComponent',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'value']
 }
 </script>

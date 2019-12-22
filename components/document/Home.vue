@@ -1,19 +1,18 @@
 <template>
   <div class="page" id="home">
     <PageHeader />
-    <main>
+    <b-container>
       <component v-for="contentNode in content" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" />
-    </main>
+    </b-container>
     <PageFooter />
   </div>
 </template>
 
 <script>
-import PageHeader from '~/components/partials/page/Header.vue'
-import PageFooter from '~/components/partials/page/Footer.vue'
+import PageHeader from '~/components/partials/page/PageHeader.vue'
+import PageFooter from '~/components/partials/page/PageFooter.vue'
 
 export default {
-  name: 'HomeComponent',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'title', 'uriPath', 'meta', 'content'],
 
   components: {

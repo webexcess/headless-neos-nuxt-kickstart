@@ -4,7 +4,6 @@
 
 <script>
 export default {
-  name: 'RichtextComponent',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'value'],
 
   watch: {

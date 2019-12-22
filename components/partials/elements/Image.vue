@@ -6,8 +6,6 @@
 
 <script>
   export default {
-    name: 'imageComponent',
-
     props: {
       src: {
         type: String

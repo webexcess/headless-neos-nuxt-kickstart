@@ -6,7 +6,6 @@
 import Button from '~/components/partials/elements/Button.vue'
 
 export default {
-  name: 'ButtonComponent',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'value'],
 
   components: {

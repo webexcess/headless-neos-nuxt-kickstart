@@ -4,7 +4,6 @@
 
 <script>
 export default {
-  name: 'H1Component',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'value'],
 
   computed: {

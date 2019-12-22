@@ -33,20 +33,14 @@ export const getters = {
 export const actions = {
   async LOAD_NAVIGATION ({ commit, rootGetters }) {
 
-    // let useMockedData = false;
-    // const response = require('~/apollo/mock/navigation');
-    // if (!useMockedData) {
+    const apollo = this.app.apolloProvider.defaultClient;
 
-      const apollo = this.app.apolloProvider.defaultClient;
-
-      const response = await apollo.query({
-        query: Navigation,
-        variables: {
-          language: rootGetters.locale
-        }
-      });
-
-    // }
+    const response = await apollo.query({
+      query: Navigation,
+      variables: {
+        language: rootGetters.locale
+      }
+    });
 
     const { documents, topnav, bottomnav } = response.data;
 

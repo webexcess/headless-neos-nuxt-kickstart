@@ -6,7 +6,6 @@
 import Img from '~/components/partials/elements/Image.vue'
 
 export default {
-  name: 'ImageComponent',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'image', 'link'],
 
   components: {

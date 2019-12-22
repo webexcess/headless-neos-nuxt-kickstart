@@ -5,8 +5,6 @@
 
 <script>
   export default {
-    name: 'buttonComponent',
-
     props: [
       'to',
       'transparent',

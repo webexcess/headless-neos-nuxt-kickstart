@@ -12,6 +12,7 @@ import Plaintext from '~/components/content/Plaintext.vue'
 import Richtext from '~/components/content/Richtext.vue'
 import Section from '~/components/content/Section.vue'
 import Singleline from '~/components/content/Singleline.vue'
+import YouTube from '~/components/content/YouTube.vue'
 
 // Documents
 Vue.component('HomeDocument', Home)
@@ -27,3 +28,4 @@ Vue.component('PlaintextContent', Plaintext)
 Vue.component('RichtextContent', Richtext)
 Vue.component('SectionContent', Section)
 Vue.component('SinglelineContent', Singleline)
+Vue.component('YouTubeContent', YouTube)

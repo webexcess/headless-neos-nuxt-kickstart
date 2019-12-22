@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: 'SectionComponent',
   props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'content']
 }
 </script>

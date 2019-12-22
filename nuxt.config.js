@@ -66,6 +66,14 @@ export default {
    */
   css: [],
   /*
+   ** Nuxt.js styleResources for every component
+   */
+  styleResources: {
+    scss: [
+      '~/assets/_mixins.scss'
+    ]
+  },
+  /*
    ** Plugins to load before mounting the App
    */
   plugins: [
@@ -86,7 +94,8 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/style-resources'
   ],
 
   env: {
