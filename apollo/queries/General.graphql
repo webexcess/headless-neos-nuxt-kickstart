@@ -1,0 +1,22 @@
+query($language: String) {
+  address: getNode(identifier: "bd72ba46-7d9a-4933-9ab2-ccd7863a0bc4", language: $language) {
+    type
+    identifier
+    apiKey
+    options
+
+    ... on Node {
+      value
+    }
+  },
+  ctaButton: getNode(identifier: "c972f288-e90d-45ca-918a-681072732de9", language: $language) {
+    type
+    identifier
+    apiKey
+    options
+
+    ... on Node {
+      value
+    }
+  }
+}

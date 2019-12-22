@@ -1,0 +1,3 @@
+fragment NodeFields on Node {
+  value
+}

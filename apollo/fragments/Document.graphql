@@ -1,0 +1,25 @@
+#import "./TabbedSubpagesContent.graphql"
+#import "./NodeCollection.graphql"
+#import "./Node.graphql"
+#import "./Image.graphql"
+
+fragment Document on Document {
+  title
+  uriPath
+  meta {
+    title
+    description
+    keywords
+  }
+  content: children {
+    type
+    identifier
+    apiKey
+    options
+
+    ...TabbedSubpagesContentFields
+    ...NodeCollectionFields
+    ...NodeFields
+    ...ImageFields
+  }
+}

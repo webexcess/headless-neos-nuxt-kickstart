@@ -1,0 +1,24 @@
+#import "./NodeCollection.graphql"
+#import "./Node.graphql"
+#import "./Image.graphql"
+
+fragment TabbedSubpagesContentFields on TabbedSubpagesContent {
+  children {
+    type
+    identifier
+    apiKey
+    options
+    title
+    uriPath
+    children(filter: {type: {not: "Pageintro"}}) {
+      type
+    	identifier
+    	apiKey
+    	options
+
+    	...NodeCollectionFields
+    	...NodeFields
+    	...ImageFields
+    }
+  }
+}

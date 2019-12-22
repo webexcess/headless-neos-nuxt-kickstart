@@ -1,0 +1,38 @@
+#import "./Node.graphql"
+#import "./Image.graphql"
+
+fragment NodeCollectionFields on NodeCollection {
+  content: children {
+    type
+    identifier
+    apiKey
+    options
+
+    ...NodeFields
+    ...ImageFields
+
+    ... on NodeCollection {
+      content: children {
+        type
+        identifier
+        apiKey
+        options
+
+        ...NodeFields
+        ...ImageFields
+
+        ... on NodeCollection {
+          content: children {
+            type
+            identifier
+            apiKey
+            options
+
+            ...NodeFields
+            ...ImageFields
+          }
+        }
+      }
+    }
+  }
+}

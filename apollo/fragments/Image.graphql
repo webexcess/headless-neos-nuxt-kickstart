@@ -1,0 +1,9 @@
+fragment ImageFields on Image {
+  image {
+    uri
+    width
+    height
+    alt
+  }
+  link
+}

@@ -1,0 +1,72 @@
+query($language: String) {
+  documents: getNodes(uri: "/", key: {not: "top-navigation, bottom-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
+    type
+    identifier
+    apiKey
+    options
+
+    ... on Document {
+      title
+      uriPath
+      subpages: getNodes(filter: {showHiddenInIndex: false}) {
+        type
+    		identifier
+    		apiKey
+    		options
+
+        ... on Document {
+          title
+          uriPath
+          addition {
+            description
+            image {
+              uri
+            }
+          }
+        }
+
+        ... on Shortcut {
+          title
+          uriPath
+        }
+      }
+    }
+
+    ... on Shortcut {
+      title
+      uriPath
+    }
+  }
+  topnav: getNodes(uri: "/", key: {eq: "top-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
+    type
+    identifier
+    apiKey
+    options
+
+    ... on Document {
+      title
+      uriPath
+    }
+
+    ... on Shortcut {
+      title
+      uriPath
+    }
+  }
+  bottomnav: getNodes(uri: "/", key: {eq: "bottom-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
+    type
+    identifier
+    apiKey
+    options
+
+    ... on Document {
+      title
+      uriPath
+    }
+
+    ... on Shortcut {
+      title
+      uriPath
+    }
+  }
+}
