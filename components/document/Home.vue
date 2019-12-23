@@ -1,9 +1,11 @@
 <template>
   <div class="page" id="home">
     <PageHeader />
-    <b-container>
-      <component v-for="contentNode in content" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" />
-    </b-container>
+    <main>
+      <b-container>
+        <component v-for="contentNode in content" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" />
+      </b-container>
+    </main>
     <PageFooter />
   </div>
 </template>
@@ -21,3 +23,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  main {
+    background-color: $color-body;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+</style>

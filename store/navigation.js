@@ -32,7 +32,6 @@ export const getters = {
 
 export const actions = {
   async LOAD_NAVIGATION ({ commit, rootGetters }) {
-
     const apollo = this.app.apolloProvider.defaultClient;
 
     const response = await apollo.query({

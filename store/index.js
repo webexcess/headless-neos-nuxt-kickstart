@@ -1,12 +1,13 @@
 import Dimensions from '~/apollo/queries/Dimensions.graphql'
+import Breadcrumb from '~/apollo/queries/Breadcrumb.graphql'
 import General from '~/apollo/queries/General.graphql'
 
 export const state = () => ({
-  locales: ['de', 'fr'],
+  locales: ['de', 'fr', 'en'],
   locale: 'de',
   dimensions: [],
-  general: [],
-  navButtonInvert: true
+  breadcrumb: [],
+  general: []
 });
 
 export const mutations = {
@@ -18,11 +19,11 @@ export const mutations = {
   SET_DIMENSIONS (state, dimensions) {
     state.dimensions = dimensions
   },
+  SET_BREADCRUMB (state, breadcrumb) {
+    state.breadcrumb = breadcrumb
+  },
   SET_GENERAL_CONTENT (state, content) {
     state.general = content
-  },
-  setNavButtonInvert (state, navButtonInvert) {
-    state.navButtonInvert = navButtonInvert
   }
 };
 
@@ -33,6 +34,9 @@ export const getters = {
   dimensions (state) {
     return state.dimensions
   },
+  breadcrumb (state) {
+    return state.breadcrumb
+  },
   general: (state) => (value = null) => {
     if (value !== null) {
       if (!value in state.general) {
@@ -41,33 +45,38 @@ export const getters = {
       return state.general[value]
     }
     return state.general
-  },
-  getNavButtonInvert (state) {
-    return state.navButtonInvert
   }
 }
 
 export const actions = {
   async LOAD_DIMENSIONS ({ commit }, path) {
+    const apollo = this.app.apolloProvider.defaultClient;
 
-    // let useMockedData = false;
-    // let response = require('~/apollo/mock/dimensions-' + path.replace(/\//g, '-'));
-    // if (!useMockedData) {
-
-      const apollo = this.app.apolloProvider.defaultClient;
-
-      let response = await apollo.query({
-        query: Dimensions,
-        variables: {
-          uri: path
-        }
-      });
-
-    // }
+    let response = await apollo.query({
+      query: Dimensions,
+      variables: {
+        uri: path
+      }
+    });
 
     const { dimensions } = response.data;
     commit('SET_DIMENSIONS', dimensions);
   },
+
+  async LOAD_BREADCRUMB ({ commit }, path) {
+    const apollo = this.app.apolloProvider.defaultClient;
+
+    const response = await apollo.query({
+      query: Breadcrumb,
+      variables: {
+        uri: path
+      }
+    });
+
+    const { breadcrumb } = response.data;
+    commit('SET_BREADCRUMB', breadcrumb);
+  },
+
   async LOAD_GENERAL_CONTENT ({ commit, rootGetters }) {
     const apollo = this.app.apolloProvider.defaultClient;
 

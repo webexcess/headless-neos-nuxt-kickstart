@@ -1,0 +1,36 @@
+query($uri: String) {
+  breadcrumb: getBreadcrumb(uri: $uri) {
+    type
+    identifier
+
+    ... on Document {
+      uriPath
+      title
+    }
+
+    ... on Home {
+      uriPath
+      title
+    }
+
+    ... on NewsRoot {
+      uriPath
+      title
+    }
+
+    ... on NewsPage {
+      uriPath
+      title
+    }
+
+    ... on ReferenceRoot {
+      uriPath
+      title
+    }
+
+    ... on ReferencePage {
+      uriPath
+      title
+    }
+  }
+}

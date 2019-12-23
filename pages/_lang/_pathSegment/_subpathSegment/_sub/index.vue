@@ -37,34 +37,22 @@ export default {
 
   asyncData (context) {
 
-    // let useMockedData = false;
-    // let response = require('~/apollo/mock/document-' + context.store.getters.locale + '-' + context.route.path.replace(/\//g, '-'));
-    // if (!useMockedData) {
+    const client = context.app.apolloProvider.defaultClient
 
-        const client = context.app.apolloProvider.defaultClient
-
-        return client.query({
-            query: Document,
-            variables: {
-                uri: context.route.path,
-                language: context.store.getters.locale
-            }
-        })
-            .then(response => {
-                const { document } = response.data
-                if (document) {
-                    return { document }
-                }
-                return context.error({ message: 'This page could not be found.', statusCode: 404 })
-            })
-
-    // }
-
-    const { document } = response.data
-    if (document) {
-        return { document }
-    }
-    return context.error({ message: 'This page could not be found.', statusCode: 404 })
+    return client.query({
+      query: Document,
+      variables: {
+        uri: context.route.path,
+        language: context.store.getters.locale
+      }
+    })
+      .then(response => {
+        const { document } = response.data
+        if (document) {
+          return { document }
+        }
+        return context.error({ message: 'This page could not be found.', statusCode: 404 })
+      })
   }
 }
 </script>

@@ -1,15 +1,17 @@
 <template>
-  <Img :src="image.uri" :alt="image.alt" :cropRatio="(getOption('cropRatio') ? getOption('cropRatio') : '16:9')" v-if="image" />
+  <img :src="image.uri" :alt="image.alt" v-lazy-load>
 </template>
 
 <script>
-import Img from '~/components/partials/elements/Image.vue'
-
 export default {
-  props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'image', 'link'],
-
-  components: {
-    Img
-  }
+  props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'image', 'link']
 }
 </script>
+
+<style lang="scss" scoped>
+  img {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+  }
+</style>

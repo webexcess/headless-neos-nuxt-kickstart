@@ -2,10 +2,10 @@
   <header>
     <b-container>
       <b-row>
-        <b-col xs="9">
+        <b-col cols="9">
           <MainNav />
         </b-col>
-        <b-col xs="3">
+        <b-col cols="3">
           <Dimension />
         </b-col>
       </b-row>
@@ -24,3 +24,9 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  header {
+    background-color: $color-header;
+  }
+</style>

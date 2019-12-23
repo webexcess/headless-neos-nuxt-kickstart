@@ -41,6 +41,7 @@ if (ENV_LAN_PUBLIC === true || ENV_LAN_PUBLIC === 'true') {
 
 export default {
   mode: 'universal',
+
   /*
    ** Headers of the page
    */
@@ -57,29 +58,46 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#fff' },
+
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '~/assets/global.scss',
+  ],
+
   /*
    ** Nuxt.js styleResources for every component
    */
   styleResources: {
     scss: [
+      '~/assets/_colors.scss',
       '~/assets/_mixins.scss'
     ]
   },
+
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in'
+  },
+
+  /*
+   ** Customize the progress-bar color
+   */
+  loading: {
+    color: '#427FB3',
+    height: '2px'
+  },
+
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     '~/plugins/components',
-    '~/plugins/i18n'
+    '~/plugins/i18n',
+    '~/plugins/global'
   ],
+
   /*
    ** Nuxt.js dev-modules
    */
@@ -87,6 +105,7 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     // '@nuxtjs/eslint-module'
   ],
+
   /*
    ** Nuxt.js modules
    */
@@ -114,7 +133,7 @@ export default {
   },
 
   router: {
-    middleware: ['i18n', 'navigation', 'dimensions', 'general'],
+    middleware: ['i18n', 'navigation', 'dimensions', 'breadcrumb', 'general'],
 
     /*
      ** Customize link classes

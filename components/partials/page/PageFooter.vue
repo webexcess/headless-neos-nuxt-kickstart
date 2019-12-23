@@ -16,6 +16,7 @@
         </b-col>
         <b-col md="4">
           c
+          <b-button>text</b-button>
         </b-col>
       </b-row>
     </b-container>
@@ -35,3 +36,11 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  footer {
+    background-color: $color-footer;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+</style>
