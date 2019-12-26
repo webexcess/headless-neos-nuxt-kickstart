@@ -2,7 +2,7 @@ query($language: String) {
   documents: getNodes(uri: "/", key: {not: "top-navigation, bottom-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
     type
     identifier
-    apiKey
+    group
     options
 
     ... on Document {
@@ -11,7 +11,7 @@ query($language: String) {
       subpages: getNodes(filter: {showHiddenInIndex: false}) {
         type
     		identifier
-    		apiKey
+    		group
     		options
 
         ... on Document {
@@ -40,7 +40,7 @@ query($language: String) {
   topnav: getNodes(uri: "/", key: {eq: "top-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
     type
     identifier
-    apiKey
+    group
     options
 
     ... on Document {
@@ -56,7 +56,7 @@ query($language: String) {
   bottomnav: getNodes(uri: "/", key: {eq: "bottom-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
     type
     identifier
-    apiKey
+    group
     options
 
     ... on Document {

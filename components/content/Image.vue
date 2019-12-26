@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'image', 'link']
+  props: ['__typename', 'type', 'identifier', 'group', 'options', 'image', 'link']
 }
 </script>
 

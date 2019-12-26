@@ -14,7 +14,7 @@ fragment Document on Document {
   content: children {
     type
     identifier
-    apiKey
+    group
     options
 
     ...TabbedSubpagesContentFields

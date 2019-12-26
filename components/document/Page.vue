@@ -15,7 +15,7 @@ import PageHeader from '~/components/partials/page/PageHeader.vue'
 import PageFooter from '~/components/partials/page/PageFooter.vue'
 
 export default {
-  props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'title', 'uriPath', 'meta', 'content'],
+  props: ['__typename', 'type', 'identifier', 'group', 'options', 'title', 'uriPath', 'meta', 'content'],
 
   components: {
     PageHeader,

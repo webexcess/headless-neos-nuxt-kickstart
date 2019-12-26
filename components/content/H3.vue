@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'value']
+  props: ['__typename', 'type', 'identifier', 'group', 'options', 'value']
 }
 </script>

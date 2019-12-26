@@ -5,7 +5,7 @@ fragment NodeCollectionFields on NodeCollection {
   content: children {
     type
     identifier
-    apiKey
+    group
     options
 
     ...NodeFields
@@ -15,7 +15,7 @@ fragment NodeCollectionFields on NodeCollection {
       content: children {
         type
         identifier
-        apiKey
+        group
         options
 
         ...NodeFields
@@ -25,7 +25,7 @@ fragment NodeCollectionFields on NodeCollection {
           content: children {
             type
             identifier
-            apiKey
+            group
             options
 
             ...NodeFields

@@ -12,7 +12,7 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    props: ['__typename', 'type', 'identifier', 'apiKey', 'options', 'content'],
+    props: ['__typename', 'type', 'identifier', 'group', 'options', 'content'],
 
     computed: {
       ...mapGetters ({

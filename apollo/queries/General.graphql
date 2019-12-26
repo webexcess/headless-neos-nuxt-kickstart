@@ -2,7 +2,7 @@ query($language: String) {
   footerText: getNode(identifier: "159bfa2c-45b2-402b-985f-838bf0e07e45", language: $language) {
     type
     identifier
-    apiKey
+    group
     options
 
     ... on Node {

@@ -5,7 +5,7 @@ query($uri: String, $language: String) {
   document: getNode(uri: $uri, language: $language) {
     type
     identifier
-    apiKey
+    group
     options
 
     ...Document
