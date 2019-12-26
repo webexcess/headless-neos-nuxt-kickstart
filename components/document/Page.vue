@@ -3,17 +3,15 @@
     <PageHeader />
     <main>
       <b-container>
-        <Breadcrumb />
         <component v-for="contentNode in content" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" />
       </b-container>
     </main>
-    <PageFooter />
+    <PageFooter :showBreadcrumb="true" />
   </div>
 </template>
 
 <script>
 import PageHeader from '~/components/partials/page/PageHeader.vue'
-import Breadcrumb from '~/components/partials/nav/Breadcrumb.vue'
 import PageFooter from '~/components/partials/page/PageFooter.vue'
 
 export default {
@@ -21,7 +19,6 @@ export default {
 
   components: {
     PageHeader,
-    Breadcrumb,
     PageFooter
   }
 }

@@ -2,21 +2,11 @@
   <footer>
     <b-container>
       <b-row>
-        <b-col md="4">
-          a:<br>
-          <nuxt-link :to="'/' + dimension">
-            [LOGO]
-          </nuxt-link>
+        <b-col md="6">
+          <div v-html="footerText.value" class="richtext" v-if="footerText" />
         </b-col>
-        <b-col md="4">
-          b:<br>
-          <address v-if="address">
-            <component :is="address.type + 'Content'" v-bind="address" />
-          </address>
-        </b-col>
-        <b-col md="4">
-          c
-          <b-button>text</b-button>
+        <b-col md="6" v-if="showBreadcrumb">
+          <Breadcrumb />
         </b-col>
       </b-row>
     </b-container>
@@ -24,12 +14,22 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      address () {
-        return this.$store.getters.general('address')
-      },
+  import Breadcrumb from '~/components/partials/nav/Breadcrumb.vue'
 
+  export default {
+    props: ['showBreadcrumb'],
+
+    components: {
+      Breadcrumb
+    },
+
+    computed: {
+      showBreadcrumb() {
+        return this.$props.showBreadcrumb === true
+      },
+      footerText () {
+        return this.$store.getters.general('footerText')
+      },
       dimension () {
         return this.$store.state.locale
       }

@@ -3,7 +3,7 @@ import Breadcrumb from '~/apollo/queries/Breadcrumb.graphql'
 import General from '~/apollo/queries/General.graphql'
 
 export const state = () => ({
-  locales: ['de', 'fr', 'en'],
+  locales: ['de', 'en'],
   locale: 'de',
   dimensions: [],
   breadcrumb: [],
