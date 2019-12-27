@@ -1,10 +1,10 @@
 <template>
   <b-row>
     <b-col cols="6">
-      <component v-for="contentNode in leftContent" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" :slider-init="true" />
+      <component v-for="contentNode in leftContent" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" />
     </b-col>
     <b-col cols="6">
-      <component v-for="contentNode in rightContent" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" :slider-init="true" />
+      <component v-for="contentNode in rightContent" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" />
     </b-col>
   </b-row>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <section :id="group || null">
-    <component v-for="contentNode in content" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" :slider-init="true" />
+    <component v-for="contentNode in content" :key="contentNode.identifier" :is="contentNode.type + 'Content'" v-bind="contentNode" />
   </section>
 </template>
 
