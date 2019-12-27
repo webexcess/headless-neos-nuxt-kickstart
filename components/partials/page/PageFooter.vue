@@ -24,9 +24,6 @@
     },
 
     computed: {
-      showBreadcrumb() {
-        return this.$props.showBreadcrumb === true
-      },
       footerText () {
         return this.$store.getters.general('footerText')
       },
