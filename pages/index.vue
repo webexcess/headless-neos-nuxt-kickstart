@@ -29,6 +29,15 @@ export default {
       meta.push({hid: 'keywords', name: 'keywords', content: this.document.meta.keywords})
     }
 
+    // robots
+    if (this.document.meta.noindex && !this.document.meta.nofollow) {
+      meta.push({hid: 'robots', name: 'robots', content: 'noindex'})
+    } else if (!this.document.meta.noindex && this.document.meta.nofollow) {
+      meta.push({hid: 'robots', name: 'robots', content: 'nofollow'})
+    } else if (this.document.meta.noindex && this.document.meta.nofollow) {
+      meta.push({hid: 'robots', name: 'robots', content: 'noindex,nofollow'})
+    }
+
     return {
       title: this.document.meta.title,
       meta

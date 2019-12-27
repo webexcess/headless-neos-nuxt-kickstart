@@ -11,6 +11,8 @@ fragment Document on Document {
     title
     description
     keywords
+    noindex
+    nofollow
   }
   content: children {
     type

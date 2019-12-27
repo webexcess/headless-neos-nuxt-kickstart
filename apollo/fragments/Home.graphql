@@ -10,6 +10,8 @@ fragment Home on Home {
     title
     description
     keywords
+    noindex
+    nofollow
   }
   content: children {
     type
