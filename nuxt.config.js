@@ -114,7 +114,8 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
     '@nuxtjs/proxy',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/sitemap'
   ],
 
   env: {
