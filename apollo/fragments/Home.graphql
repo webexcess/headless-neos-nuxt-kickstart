@@ -1,6 +1,7 @@
 #import "./NodeCollection.graphql"
 #import "./Node.graphql"
 #import "./Image.graphql"
+#import "./YouTube.graphql"
 
 fragment Home on Home {
   title
@@ -19,5 +20,6 @@ fragment Home on Home {
     ...NodeCollectionFields
     ...NodeFields
     ...ImageFields
+    ...YouTubeFields
   }
 }

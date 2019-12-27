@@ -2,6 +2,7 @@
 #import "./NodeCollection.graphql"
 #import "./Node.graphql"
 #import "./Image.graphql"
+#import "./YouTube.graphql"
 
 fragment Document on Document {
   title
@@ -21,5 +22,6 @@ fragment Document on Document {
     ...NodeCollectionFields
     ...NodeFields
     ...ImageFields
+    ...YouTubeFields
   }
 }

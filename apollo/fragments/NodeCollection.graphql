@@ -1,5 +1,6 @@
 #import "./Node.graphql"
 #import "./Image.graphql"
+#import "./YouTube.graphql"
 
 fragment NodeCollectionFields on NodeCollection {
   content: children {
@@ -10,6 +11,7 @@ fragment NodeCollectionFields on NodeCollection {
 
     ...NodeFields
     ...ImageFields
+    ...YouTubeFields
 
     ... on NodeCollection {
       content: children {
@@ -20,6 +22,7 @@ fragment NodeCollectionFields on NodeCollection {
 
         ...NodeFields
         ...ImageFields
+        ...YouTubeFields
 
         ... on NodeCollection {
           content: children {
@@ -30,6 +33,7 @@ fragment NodeCollectionFields on NodeCollection {
 
             ...NodeFields
             ...ImageFields
+            ...YouTubeFields
           }
         }
       }
