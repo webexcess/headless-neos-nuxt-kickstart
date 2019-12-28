@@ -1,5 +1,5 @@
 query($language: String) {
-  documents: getNodes(uri: "/", key: {not: "top-navigation, bottom-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
+  documents: getNodes(uri: "/", group: {not: "meta-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
     type
     identifier
     group
@@ -37,23 +37,7 @@ query($language: String) {
       uriPath
     }
   }
-  topnav: getNodes(uri: "/", key: {eq: "top-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
-    type
-    identifier
-    group
-    options
-
-    ... on Document {
-      title
-      uriPath
-    }
-
-    ... on Shortcut {
-      title
-      uriPath
-    }
-  }
-  bottomnav: getNodes(uri: "/", key: {eq: "bottom-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
+  meta: getNodes(uri: "/", group: {eq: "meta-navigation"}, language: $language, filter: {showHiddenInIndex: false}) {
     type
     identifier
     group

@@ -2,19 +2,15 @@ import Navigation from '~/apollo/queries/Navigation.graphql'
 
 export const state = () => ({
   main: [],
-  top: [],
-  bottom: [],
+  meta: [],
 });
 
 export const mutations = {
   SET_MAIN(state, payload) {
     state.main = payload;
   },
-  SET_TOP(state, payload) {
-    state.top = payload;
-  },
-  SET_BOTTOM(state, payload) {
-    state.bottom = payload;
+  SET_META(state, payload) {
+    state.meta = payload;
   },
 };
 
@@ -22,11 +18,8 @@ export const getters = {
   main(state) {
     return state.main;
   },
-  top(state) {
-    return state.top;
-  },
-  bottom(state) {
-    return state.bottom;
+  meta(state) {
+    return state.meta;
   },
 }
 
@@ -41,10 +34,10 @@ export const actions = {
       }
     });
 
-    const { documents, topnav, bottomnav } = response.data;
+    const { documents, meta } = response.data;
 
+    console.log(meta, 'meta')
     commit('SET_MAIN', documents);
-    commit('SET_TOP', topnav);
-    commit('SET_BOTTOM', bottomnav);
+    commit('SET_META', meta);
   },
 };
