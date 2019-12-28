@@ -5,17 +5,17 @@
   "author": "Stefan Bruggmann",
   "private": true,
   "scripts": {
-    "dev": "GRAPHQL_HOST=https://neos.domain.com nuxt",
-    "dev:lan-public": "LAN_PUBLIC=true GRAPHQL_HOST=https://neos.domain.com nuxt",
+    "dev": "GRAPHQL_HOST=https://neos.headless-demo.neos-hosting.ch nuxt",
+    "dev:lan-public": "LAN_PUBLIC=true GRAPHQL_HOST=https://neos.headless-demo.neos-hosting.ch nuxt",
     "dev:local": "GRAPHQL_HOST=http://localhost:3000 PROXY_TARGET=http://localhost:8081 nuxt",
     "dev:local:lan-public": "LAN_PUBLIC=true GRAPHQL_HOST=http://localhost:8081 nuxt",
-    "build": "GRAPHQL_HOST=https://neos.domain.com nuxt build",
+    "build": "GRAPHQL_HOST=https://neos.headless-demo.neos-hosting.ch nuxt build",
     "build:local": "GRAPHQL_HOST=http://localhost:3000 PROXY_TARGET=http://localhost:8081 nuxt build",
-    "start": "GRAPHQL_HOST=https://neos.domain.com nuxt start",
+    "start": "GRAPHQL_HOST=https://neos.headless-demo.neos-hosting.ch nuxt start",
     "start:local": "GRAPHQL_HOST=http://localhost:3000 PROXY_TARGET=http://localhost:8081 nuxt start",
-    "generate": "GRAPHQL_HOST=https://neos.domain.com nuxt generate",
+    "generate": "GRAPHQL_HOST=https://neos.headless-demo.neos-hosting.ch nuxt generate",
     "generate:local": "GRAPHQL_HOST=http://localhost:8081 PROXY_TARGET=http://localhost:8081 nuxt generate",
-    "fetch-fragments": "GRAPHQL_HOST=https://neos.domain.com node ./fragmentSchemas.js",
+    "fetch-fragments": "GRAPHQL_HOST=https://neos.headless-demo.neos-hosting.ch node ./fragmentSchemas.js",
     "fetch-fragments:local": "GRAPHQL_HOST=http://localhost:8081 node ./fragmentSchemas.js",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
@@ -59,5 +59,9 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "prettier": "^1.16.4"
+  },
+  "optionalDependencies": {
+    "nuxt-start": "^2.11.0",
+    "pm2": "^4.2.1"
   }
 }
