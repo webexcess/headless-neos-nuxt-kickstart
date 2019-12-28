@@ -36,7 +36,6 @@ export const actions = {
 
     const { documents, meta } = response.data;
 
-    console.log(meta, 'meta')
     commit('SET_MAIN', documents);
     commit('SET_META', meta);
   },
