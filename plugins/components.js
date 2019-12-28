@@ -17,6 +17,7 @@ import Blockquote from '~/components/content/Blockquote.vue'
 import Section from '~/components/content/Section.vue'
 import YouTube from '~/components/content/YouTube.vue'
 import TwoColumn from '~/components/content/TwoColumn.vue'
+import Card from '~/components/content/Card.vue'
 
 // Document components
 Vue.component('HomeDocument', Home)
@@ -35,3 +36,4 @@ Vue.component('BlockquoteContent', Blockquote)
 Vue.component('SinglelineContent', Singleline)
 Vue.component('YouTubeContent', YouTube)
 Vue.component('TwoColumnContent', TwoColumn)
+Vue.component('CardContent', Card)
