@@ -1,0 +1,13 @@
+query($uri: String) {
+  dimensions: getNodeInAllDimensions(uri: $uri) {
+    ... on Document {
+      uriPath
+      dimensionValue
+    }
+
+    ... on Home {
+      uriPath
+      dimensionValue
+    }
+  }
+}

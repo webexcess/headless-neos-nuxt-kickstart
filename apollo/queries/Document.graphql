@@ -1,0 +1,14 @@
+#import "../fragments/Document.graphql"
+#import "../fragments/Home.graphql"
+
+query($uri: String, $language: String) {
+  document: getNode(uri: $uri, language: $language) {
+    type
+    identifier
+    group
+    options
+
+    ...Document
+    ...Home
+  }
+}

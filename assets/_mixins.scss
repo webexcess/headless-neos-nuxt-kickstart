@@ -1,0 +1,245 @@
+// fontFace
+// @include fontFace('Neutraface', '../fonts', 'Neutraface-Bold', normal, bold);
+@mixin font-face($font-family, $font-url, $font-name, $font-style, $font-weight) {
+	@font-face {
+		src: url($font-url + '/' + $font-name + '.woff') format('woff'), url($font-url + '/' + $font-name + '.woff2') format('woff2');
+		font: {
+			family: $font-family;
+			style: $font-style;
+			weight: $font-weight;
+		}
+	}
+}
+
+// linkColors
+// a { @include linkColor($color-black, $color-green, none, none); }
+@mixin link-color($link, $hover, $deco1, $deco2) {
+  &:link,
+	&:active,
+	&:visited {
+		color: $link;
+		text-decoration: $deco1;
+	}
+  &:hover {
+		color: $hover;
+		text-decoration: $deco2;
+	}
+}
+
+// placeholder
+// input { @include placeholder { color: #f00; }; }
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content }
+	&:-moz-placeholder { @content }
+	&::-moz-placeholder { @content }
+	&:-ms-input-placeholder { @content }
+	&.placeholder { @content }
+}
+
+// position
+// .box { @include position(absolute, 0, 0, 0, 0); }
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// position relative
+// .box { @include relative(0, 0, 0, 0); }
+@mixin relative($top: null, $right: null, $bottom: null, $left: null) {
+  position: relative;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+// position absolute
+// .box { @include absolute(0, 0, 0, 0); }
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+  position: absolute;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+// position fixed
+// .box { @include fixed(0, 0, 0, 0); }
+@mixin fixed($top: null, $right: null, $bottom: null, $left: null) {
+  position: fixed;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+// clearfix
+// .box { @include clearfix; }
+@mixin clearfix {
+  &:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+// text ellipsis
+// p { @include ellipsis; }
+@mixin ellipsis {
+  overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// font smoothing
+// .text { @include fontSmoothing; }
+@mixin font-smoothing() {
+  font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// text selection
+// p { @include textSelection(white, black); }
+@mixin text-selection($color, $background) {
+  @each $prefix in -moz-, '' {
+    ::#{$prefix}selection {
+			color: $color;
+			background: $background;
+		}
+  }
+}
+
+// aspect-ratio
+// .box { @include aspect-ratio($arglist... $width/$ratio, $height) }
+@mixin aspect-ratio($arglist... /*$width/$ratio, $height*/){
+  $map : keywords($arglist);
+  $height: map-get($map, height) or nth-or-null($arglist, 2);
+  $width:  map-get($map, width)  or nth-or-null($arglist, 1);
+  $ratio:  map-get($map, ratio)  or if($width and $height, $width/$height, nth-or-null($arglist, 1)) or 1;
+  $padding: 1/$ratio * 100%;
+  &:before { content: ''; float: left; padding-bottom: $padding; }
+  &:after  { content: ''; display: table; clear: both; }
+}
+// return null rather than throwing an error if index is outside list range.
+@function nth-or-null($list, $index) {
+	@return if(length($list) >= $index, nth($list, $index), null);
+}
+
+// optimized svg url
+@function svg-url($svg){
+  // add missing namespace
+  @if not str-index($svg,xmlns) {
+      $svg: str-replace($svg, '<svg','<svg xmlns="http://www.w3.org/2000/svg"');
+  }
+  // chunk up string in order to avoid "stack level too deep" error
+  $encoded:'';
+  $slice: 2000;
+  $index: 0;
+  $loops: ceil(str-length($svg)/$slice);
+  @for $i from 1 through $loops {
+    $chunk: str-slice($svg, $index, $index + $slice - 1);
+    // Encode
+    $chunk: str-replace($chunk,'"', '\'');
+    $chunk: str-replace($chunk,'%', '%25');
+    $chunk: str-replace($chunk,'&', '%26');
+    $chunk: str-replace($chunk,'#', '%23');
+    $chunk: str-replace($chunk,'{', '%7B');
+    $chunk: str-replace($chunk,'}', '%7D');
+    $chunk: str-replace($chunk,'<', '%3C');
+    $chunk: str-replace($chunk,'>', '%3E');
+
+    // The maybe list
+    //
+    // Keep size and compile time down
+    // ... only add on documented fail
+    //
+    // $chunk: str-replace($chunk, '|', '%7C');
+    // $chunk: str-replace($chunk, '[', '%5B');
+    // $chunk: str-replace($chunk, ']', '%5D');
+    // $chunk: str-replace($chunk, '^', '%5E');
+    // $chunk: str-replace($chunk, '`', '%60');
+    // $chunk: str-replace($chunk, ';', '%3B');
+    // $chunk: str-replace($chunk, '?', '%3F');
+    // $chunk: str-replace($chunk, ':', '%3A');
+    // $chunk: str-replace($chunk, '@', '%40');
+    // $chunk: str-replace($chunk, '=', '%3D');
+
+    $encoded: #{$encoded}#{$chunk};
+    $index: $index + $slice;
+  }
+  @return url("data:image/svg+xml,#{$encoded}");
+}
+//  helper function to replace characters in a string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @return if($index,
+    str-slice($string, 1, $index - 1) + $replace +
+    str-replace(str-slice($string, $index +
+    str-length($search)), $search, $replace),
+    $string);
+}
+//  background svg mixin
+//  .box { @include background-svg($svg); }
+@mixin background-svg($svg) {
+  background-image: svg-url($svg);
+}
+//  content svg mixin
+//  .box:after { @include content-svg($svg); }
+@mixin content-svg($svg) {
+  content: svg-url($svg);
+}
+
+//	mixin for multiline
+//	.block-with-text { @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3, $bgColor: white); }
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+//	Line Height Crop
+//	.text-to-crop { @include lhCrop(1.2, 0.75) }
+@mixin lhCrop($line-height, $capital-letter: 1) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((#{$capital-letter} - #{$line-height}) * 0.5em);
+  }
+}
+
+//	Grid size
+//	.block { padding: grid(1); }
+@function grid($size, $additional: 0) {
+	@if $additional == 0 {
+		@return calc((100vw / #{$grid-columns}) * #{$size});
+	}
+	@else {
+		@return calc(((100vw / #{$grid-columns}) * #{$size}) + #{$additional});
+	}
+}

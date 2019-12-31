@@ -1,0 +1,29 @@
+#import "./TabbedSubpagesContent.graphql"
+#import "./NodeCollection.graphql"
+#import "./Node.graphql"
+#import "./Image.graphql"
+#import "./YouTube.graphql"
+
+fragment Document on Document {
+  title
+  uriPath
+  meta {
+    title
+    description
+    keywords
+    noindex
+    nofollow
+  }
+  content: children {
+    type
+    identifier
+    group
+    options
+
+    ...TabbedSubpagesContentFields
+    ...NodeCollectionFields
+    ...NodeFields
+    ...ImageFields
+    ...YouTubeFields
+  }
+}

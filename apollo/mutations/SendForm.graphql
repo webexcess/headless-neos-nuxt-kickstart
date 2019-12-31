@@ -1,0 +1,13 @@
+mutation sendForm($from: String!, $to: String, $subject: String!, $fields: String!, $label: String!, $message: String) {
+  sendForm(
+    from: $from
+    to: $to
+    subject: $subject
+    fields: $fields
+    label: $label
+    message: $message
+  ) {
+    status
+    message
+  }
+}

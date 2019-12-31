@@ -1,0 +1,10 @@
+fragment YouTubeFields on YouTube {
+  value
+  caption
+  image {
+    uri
+    width
+    height
+    alt
+  }
+}

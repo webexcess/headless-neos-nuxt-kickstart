@@ -1,0 +1,22 @@
+@import "colors";
+@import "mixins";
+
+.page-enter-active, .page-leave-active {
+  color: inherit;
+
+  main {
+    transition: opacity .5s
+  }
+}
+
+.page-enter, .page-leave-active {
+  color: inherit;
+
+  main {
+    opacity: 0
+  }
+}
+
+p {
+  max-width: 700px;
+}

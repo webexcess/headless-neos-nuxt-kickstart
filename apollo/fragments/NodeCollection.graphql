@@ -1,0 +1,42 @@
+#import "./Node.graphql"
+#import "./Image.graphql"
+#import "./YouTube.graphql"
+
+fragment NodeCollectionFields on NodeCollection {
+  content: children {
+    type
+    identifier
+    group
+    options
+
+    ...NodeFields
+    ...ImageFields
+    ...YouTubeFields
+
+    ... on NodeCollection {
+      content: children {
+        type
+        identifier
+        group
+        options
+
+        ...NodeFields
+        ...ImageFields
+        ...YouTubeFields
+
+        ... on NodeCollection {
+          content: children {
+            type
+            identifier
+            group
+            options
+
+            ...NodeFields
+            ...ImageFields
+            ...YouTubeFields
+          }
+        }
+      }
+    }
+  }
+}

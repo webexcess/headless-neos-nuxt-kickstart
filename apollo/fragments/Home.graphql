@@ -1,0 +1,27 @@
+#import "./NodeCollection.graphql"
+#import "./Node.graphql"
+#import "./Image.graphql"
+#import "./YouTube.graphql"
+
+fragment Home on Home {
+  title
+  uriPath
+  meta {
+    title
+    description
+    keywords
+    noindex
+    nofollow
+  }
+  content: children {
+    type
+    identifier
+    group
+    options
+
+    ...NodeCollectionFields
+    ...NodeFields
+    ...ImageFields
+    ...YouTubeFields
+  }
+}
