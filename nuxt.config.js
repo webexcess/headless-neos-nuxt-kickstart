@@ -2,7 +2,7 @@ const pkg = require('./package')
 const axios = require('axios')
 const https = require('https')
 
-const ENV_GRAPHQL_HOST = process.env.GRAPHQL_HOST ? process.env.GRAPHQL_HOST : 'https://neos.philippos.neos-hosting.ch'
+const ENV_GRAPHQL_HOST = process.env.GRAPHQL_HOST ? process.env.GRAPHQL_HOST : 'https://neos.headless-demo.neos-hosting.ch'
 const ENV_PROXY_TARGET = process.env.PROXY_TARGET ? process.env.PROXY_TARGET : ENV_GRAPHQL_HOST
 let ENV_LAN_PUBLIC = process.env.LAN_PUBLIC ? process.env.LAN_PUBLIC : false
 

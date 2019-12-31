@@ -1,12 +1,14 @@
-# nuxt
+# Nuxt.js Kickstart
 
-> Nuxt.js Frontend for Headless Neos CMS as a Service
+> Nuxt.js Frontend for [Headless Neos CMS as a Service](https://webexcess.ch/headless)
 
 ## Build Setup
 
 ``` bash
+$ nvm use
+
 # install dependencies
-$ npm run install
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
@@ -19,4 +21,8 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+See [components/README.md](nuxt/components/README.md) for documentation about custom component creation.
+
+---
+
+by [webexcess.ch/headless](https://webexcess.ch/headless)
