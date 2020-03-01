@@ -118,6 +118,10 @@ export default {
     '@nuxtjs/sitemap'
   ],
 
+  server: {
+    host: ENV_LAN_PUBLIC ? '0.0.0.0' : 'localhost'
+  },
+
   env: {
     httpEndpoint: ENV_LAN_PUBLIC ? 'http://' + ENV_LAN_PUBLIC + ':3000/root' : ENV_GRAPHQL_HOST + '/root'
   },
