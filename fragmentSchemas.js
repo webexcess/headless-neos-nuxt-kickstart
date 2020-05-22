@@ -1,7 +1,9 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-fetch('http://localhost:8081/root', {
+const ENV_GRAPHQL_HOST = process.env.GRAPHQL_HOST ? process.env.GRAPHQL_HOST : 'http://localhost:8081'
+
+fetch(ENV_GRAPHQL_HOST + '/root', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({

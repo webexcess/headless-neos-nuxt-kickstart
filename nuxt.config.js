@@ -42,6 +42,10 @@ if (ENV_LAN_PUBLIC === true || ENV_LAN_PUBLIC === 'true') {
 export default {
   mode: 'universal',
 
+  server: {
+    host: ENV_LAN_PUBLIC ? '0.0.0.0' : 'localhost'
+  },
+
   /*
    ** Headers of the page
    */
@@ -114,13 +118,8 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
     '@nuxtjs/proxy',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/style-resources'
   ],
-
-  server: {
-    host: ENV_LAN_PUBLIC ? '0.0.0.0' : 'localhost'
-  },
 
   env: {
     httpEndpoint: ENV_LAN_PUBLIC ? 'http://' + ENV_LAN_PUBLIC + ':3000/root' : ENV_GRAPHQL_HOST + '/root'
@@ -153,7 +152,7 @@ export default {
 
       const query = `
         query allDocuments {
-          documents: getNodeInAllDimensions {
+          documents: getNodeInAllDimensions(filter: {type: {eq: "Home,Page"}}) {
             ... on Document {
               uriPath
             }
