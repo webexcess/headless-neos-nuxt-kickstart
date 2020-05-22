@@ -118,8 +118,7 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
     '@nuxtjs/proxy',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/style-resources'
   ],
 
   env: {
@@ -153,7 +152,7 @@ export default {
 
       const query = `
         query allDocuments {
-          documents: getNodeInAllDimensions {
+          documents: getNodeInAllDimensions(filter: {type: {eq: "Home,Page"}}) {
             ... on Document {
               uriPath
             }
