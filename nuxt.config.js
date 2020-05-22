@@ -42,6 +42,10 @@ if (ENV_LAN_PUBLIC === true || ENV_LAN_PUBLIC === 'true') {
 export default {
   mode: 'universal',
 
+  server: {
+    host: ENV_LAN_PUBLIC ? '0.0.0.0' : 'localhost'
+  },
+
   /*
    ** Headers of the page
    */
